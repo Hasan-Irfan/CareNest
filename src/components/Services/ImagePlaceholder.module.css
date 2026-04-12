@@ -1,0 +1,39 @@
+.fill {
+  height: 100%;
+  min-height: 200px;
+}
+
+.wrap {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #e8eef5 0%, #dce6f2 50%, #ecf2f8 100%);
+  border: 1px dashed rgba(26, 54, 93, 0.2);
+  overflow: hidden;
+}
+
+.inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.icon {
+  color: rgba(26, 54, 93, 0.35);
+}
+
+.label {
+  font: var(--font-label-md);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(26, 54, 93, 0.45);
+  max-width: 90%;
+  line-height: 1.35;
+}

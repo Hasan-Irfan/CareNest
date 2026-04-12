@@ -1,0 +1,4 @@
+.shell {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f0f4ff 0%, #f8fafc 45%, #eef2ff 100%);
+}

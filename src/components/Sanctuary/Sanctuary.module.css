@@ -1,0 +1,133 @@
+.sanctuary {
+  padding: var(--space-5xl) 0;
+  background: var(--surface);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+/* ── Image ── */
+.imageCol {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: all 0.8s var(--ease-out);
+}
+
+.visible .imageCol {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.imageWrap {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+}
+
+.imageWrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 77, 153, 0.08) 100%);
+  pointer-events: none;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Content ── */
+.contentCol {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: all 0.8s var(--ease-out) 0.15s;
+}
+
+.visible .contentCol {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+.pillar {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  background: var(--surface-container-low);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.visible .pillar {
+  animation: pillarSlide 0.5s var(--ease-out) both;
+}
+
+@keyframes pillarSlide {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pillar:hover {
+  background: var(--surface-container);
+  transform: translateX(4px);
+}
+
+.pillarIcon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--primary-fixed);
+  color: var(--primary);
+}
+
+.pillarTitle {
+  font: var(--font-title-md);
+  color: var(--on-surface);
+  margin-bottom: 4px;
+}
+
+.pillarDesc {
+  font: var(--font-body-sm);
+  color: var(--on-surface-variant);
+  line-height: 1.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .imageCol {
+    order: 2;
+  }
+
+  .contentCol {
+    order: 1;
+  }
+}

@@ -1,0 +1,5 @@
+/* Shared about-page surface (lavender from design reference) */
+.wrapper {
+  background: #f4f7ff;
+  min-height: 100vh;
+}

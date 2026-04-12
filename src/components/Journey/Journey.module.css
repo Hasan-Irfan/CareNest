@@ -1,0 +1,125 @@
+.journey {
+  padding: var(--space-5xl) 0;
+  background: var(--surface-container-low);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.7s var(--ease-out);
+}
+
+.visible .header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header .section-subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Timeline ── */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.visible .step {
+  animation: stepIn 0.6s var(--ease-out) both;
+}
+
+@keyframes stepIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stepNum {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary), var(--primary-container));
+  color: var(--on-primary);
+  font: var(--font-headline-md);
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 24px rgba(0, 77, 153, 0.2);
+}
+
+.connector {
+  position: absolute;
+  top: 32px;
+  left: calc(50% + 40px);
+  width: calc(100% - 40px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-fixed-dim), var(--primary-fixed));
+  z-index: 1;
+}
+
+.stepContent {
+  max-width: 280px;
+}
+
+.stepTitle {
+  font: var(--font-title-md);
+  color: var(--on-surface);
+  margin-bottom: var(--space-sm);
+}
+
+.stepDesc {
+  font: var(--font-body-sm);
+  color: var(--on-surface-variant);
+  line-height: 1.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .connector {
+    display: none;
+  }
+
+  .step {
+    flex-direction: row;
+    text-align: left;
+    gap: var(--space-md);
+  }
+
+  .stepNum {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 0;
+  }
+}
