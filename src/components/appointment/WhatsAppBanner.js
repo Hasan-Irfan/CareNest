@@ -4,7 +4,7 @@ import { useSectionReveal } from '@/components/services/useSectionReveal';
 import styles from './WhatsAppBanner.module.css';
 
 const WHATSAPP_URL =
-  'https://wa.me/923001234567?text=' + encodeURIComponent('Hello CareNest, I would like to book an appointment.');
+  'https://wa.me/923359057555?text=' + encodeURIComponent('Hello CareNest, I would like to book an appointment.');
 
 export default function WhatsAppBanner() {
   const ref = useSectionReveal(styles.visible);

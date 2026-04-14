@@ -15,7 +15,7 @@ export const BLOG_POSTS = [
     author: 'CareNest Editorial',
     date: 'May 24, 2024',
     readTime: '8 min read',
-    image: '/images/blog-reference.png',
+    image: '/images/blog.jpg',
     imageAlt: 'Physician with digital tools representing modern home healthcare',
     body: [
       'Home healthcare in Pakistan is no longer a niche convenience—it is becoming a core part of how families manage recovery, chronic illness, and aging in place.',
@@ -33,7 +33,7 @@ export const BLOG_POSTS = [
     author: 'Dr. Sarah Khan',
     date: 'Jun 2, 2024',
     readTime: '6 min read',
-    image: '/images/about-care-team.png',
+    image: '/images/about-team.png',
     imageAlt: 'Clinical team providing attentive home-based nursing care',
     body: [
       'Elderly patients often need more than medication reminders—they need observation, dignity, and continuity. Specialized nurses watch for subtle changes that families might miss.',

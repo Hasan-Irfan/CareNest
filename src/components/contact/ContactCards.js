@@ -28,8 +28,8 @@ const cards = [
     key: 'phone',
     title: 'Call us 24/7',
     body: 'Speak directly with our clinical coordination desk anytime.',
-    href: 'tel:+923001234567',
-    linkText: '+92 300 123 4567',
+    href: 'tel:+92 335-9057555',
+    linkText: '92 335-9057555',
     linkClass: styles.linkGreen,
     iconWrap: styles.iconGreen,
     icon: (
@@ -47,8 +47,8 @@ const cards = [
     key: 'whatsapp',
     title: 'WhatsApp',
     body: "Fast and efficient medical booking via Pakistan's favorite app.",
-    href: 'https://wa.me/923001234567?text=Hello%20CareNest%2C%20I%27d%20like%20to%20chat%20with%20a%20nurse.',
-    linkText: 'Chat with Nurse',
+    href: 'https://wa.me/923359057555?text=Hello%20CareNest%2C%20I%27d%20like%20to%20chat%20with%20a%20nurse.',
+    linkText: 'Chat with Staff',
     linkClass: styles.linkBlue,
     iconWrap: styles.iconBlue,
     icon: (

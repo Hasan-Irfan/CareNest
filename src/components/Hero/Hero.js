@@ -29,11 +29,10 @@ export default function Hero() {
           <span className={styles.badge}>PMDC Certified Excellence</span>
 
           <h1 className={styles.title}>
-            Quality Healthcare,
+            <span className={styles.titleAccent}>Quality Healthcare,</span>
             <br />
-            <span className={styles.titleAccent}>Care</span> at Your Doorstep
+            at Your Doorstep
           </h1>
-
           <p className={styles.subtitle}>
             Carenest pakistan provides professional home health care services including nursing care, physiotherapy, psychiatrist sessions,
             patient attendants, and medical support at your home

@@ -15,14 +15,14 @@ const testimonials = [
   {
     name: "Mr. Ali Raza",
     role: "Rawalpindi ",
-    image: "/images/testimonial-portrait.png",
+    image: "/images/testimonial-portrait2.jpg",
     rating: 4.5,
     text: `The staff was professional and responsive. Booking was smooth and the nurse was very kind. Slight delay once, but overall excellent experience.`
   },
   {
-    name: "Mrs. Ayesha Khan",
+    name: "Mrs. Amna Khan",
     role: "Islamabad",
-    image: "/images/testimonial-portrait.png",
+    image: "/images/leader-amna.png",
     rating: 5,
     text: `Highly reliable service! Their home care made recovery stress-free for my father. Truly compassionate and skilled team.`
   }

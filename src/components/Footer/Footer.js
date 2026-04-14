@@ -2,15 +2,14 @@ import Link from 'next/link';
 import styles from './Footer.module.css';
 
 const quickLinks = [
-  { label: 'Privacy Policy', href: '/privacy' },
-  { label: 'Terms of Service', href: '/terms' },
-  { label: 'Patient Portal', href: '/portal' },
-  { label: 'Careers', href: '/careers' },
-  { label: 'Support', href: '/support' },
+  // { label: 'Privacy Policy', href: '/privacy' },
+  // { label: 'Terms of Service', href: '/terms' },
+  { label: 'Patient Portal', href: '/book' },
+  { label: 'Careers', href: '/contact' },
+  { label: 'Support', href: '/contact' },
 ];
 
 const services = [
-  { label: 'Doctor Visits', href: '/services#doctor-visits' },
   { label: 'Nursing Care', href: '/services#nursing-care' },
   { label: 'Physiotherapy', href: '/services#physiotherapy' },
   { label: 'Lab Tests', href: '/services#lab-tests' },

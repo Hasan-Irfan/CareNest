@@ -1,6 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
@@ -23,6 +25,12 @@ export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Wait for client mount before using createPortal
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -36,83 +44,103 @@ export default function Navbar() {
     } else {
       document.body.style.overflow = '';
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [menuOpen]);
 
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  const mobileMenuMarkup = (
+    <div
+      className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`}
+      aria-hidden={!menuOpen}
+      // Clicking the backdrop (this div) closes the menu
+      onClick={() => setMenuOpen(false)}
+    >
+      {/* stopPropagation prevents clicks inside the panel from bubbling to the backdrop */}
+      <ul className={styles.mobileLinks} onClick={(e) => e.stopPropagation()}>
+        {navLinks.map((link, i) => (
+          <li key={link.label} style={{ animationDelay: menuOpen ? `${i * 0.06}s` : '0s' }}>
+            <Link
+              href={link.href}
+              className={`${styles.mobileLink} ${linkActive(pathname, link.href) ? styles.mobileLinkActive : ''}`}
+              onClick={() => setMenuOpen(false)}
+              aria-current={linkActive(pathname, link.href) ? 'page' : undefined}
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <Link
+        href="/book"
+        className="btn-primary"
+        onClick={() => setMenuOpen(false)}
+      >
+        <span>Book Consultation</span>
+      </Link>
+    </div>
+  );
+
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
-      <nav className={`${styles.nav} container-wide`}>
-        {/* Logo */}
-        <Link href="/" className={styles.logo}>
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <rect width="32" height="32" rx="8" fill="url(#logo-grad)" />
-            <path d="M16 8c-1.5 0-2.7.5-3.5 1.3C11.7 10.1 11 11.3 11 13c0 2.5 2 5 5 8 3-3 5-5.5 5-8 0-1.7-.7-2.9-1.5-3.7C18.7 8.5 17.5 8 16 8z" fill="#fff"/>
-            <path d="M14 15h4M16 13v4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round"/>
-            <defs>
-              <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32">
-                <stop stopColor="#004d99"/>
-                <stop offset="1" stopColor="#1565c0"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          <span className={styles.logoText}>CareNest</span>
-        </Link>
-
-        {/* Desktop Links */}
-        <ul className={styles.links}>
-          {navLinks.map((link) => (
-            <li key={link.label}>
-              <Link
-                href={link.href}
-                className={`${styles.link} ${linkActive(pathname, link.href) ? styles.linkActive : ''}`}
-                aria-current={linkActive(pathname, link.href) ? 'page' : undefined}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* CTA */}
-        <div className={styles.actions}>
-          <Link href="/book" className="btn-primary">
-            <span>Book Consultation</span>
+    <>
+      <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+        <nav className={`${styles.nav} container-wide`}>
+          {/* Logo */}
+          <Link href="/" className={styles.logo}>
+            <Image
+              src="/images/logo.png"
+              alt="CareNest"
+              width={65}
+              height={65}
+              aria-hidden="true"
+            />
+            <span className={styles.logoText}>CareNest</span>
           </Link>
-        </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-      </nav>
+          {/* Desktop Links */}
+          <ul className={styles.links}>
+            {navLinks.map((link) => (
+              <li key={link.label}>
+                <Link
+                  href={link.href}
+                  className={`${styles.link} ${linkActive(pathname, link.href) ? styles.linkActive : ''}`}
+                  aria-current={linkActive(pathname, link.href) ? 'page' : undefined}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-      {/* Mobile Menu */}
-      <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`}>
-        <ul className={styles.mobileLinks}>
-          {navLinks.map((link, i) => (
-            <li key={link.label} style={{ animationDelay: `${i * 0.06}s` }}>
-              <Link
-                href={link.href}
-                className={`${styles.mobileLink} ${linkActive(pathname, link.href) ? styles.mobileLinkActive : ''}`}
-                onClick={() => setMenuOpen(false)}
-                aria-current={linkActive(pathname, link.href) ? 'page' : undefined}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <Link href="/book" className="btn-primary" onClick={() => setMenuOpen(false)}>
-          <span>Book Consultation</span>
-        </Link>
-      </div>
-    </header>
+          {/* CTA */}
+          <div className={styles.actions}>
+            <Link href="/book" className="btn-primary">
+              <span>Book Consultation</span>
+            </Link>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button
+            className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ''}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </nav>
+      </header>
+
+      {/* Mobile Menu — portaled to <body> to escape header stacking context */}
+      {mounted && createPortal(mobileMenuMarkup, document.body)}
+    </>
   );
 }
