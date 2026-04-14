@@ -14,7 +14,7 @@ export default function AboutPage() {
       <AboutMissionVision />
       <AboutAdvantage />
       <AboutLeadership />
-      <AboutPartners />
+      {/* <AboutPartners /> */}
     </div>
   );
 }

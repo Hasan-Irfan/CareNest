@@ -9,12 +9,13 @@ export default function AboutTrust() {
         <div className={styles.visual}>
           <div className={styles.imageCard}>
             <Image
-              src="/images/about-care-team.png"
+              src="/images/about-team1.png"
               alt="CareNest clinical team in scrubs providing compassionate home care"
               width={720}
               height={540}
               className={styles.image}
               sizes="(max-width: 900px) 100vw, 50vw"
+              loading="eager"
             />
             <blockquote className={styles.quote}>
               <p>

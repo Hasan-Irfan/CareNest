@@ -2,17 +2,17 @@ import styles from './AboutAdvantage.module.css';
 
 const stats = [
   {
-    stat: '500+',
+    stat: '100+',
     label: 'Certified Nurses',
     icon: 'bag',
   },
   {
-    stat: '12k+',
+    stat: '230+',
     label: 'Families Served',
     icon: 'people',
   },
   {
-    stat: '15',
+    stat: '3',
     label: 'Cities Across Pakistan',
     icon: 'pin',
   },

@@ -25,9 +25,9 @@ export default function ContactMap() {
           <div className={styles.mapTint} aria-hidden="true" />
           <div className={styles.mapGrid} aria-hidden="true" />
           <div className={styles.pinCard}>
-            <h2 className={styles.pinTitle}>Islamabad HQ</h2>
+            <h2 className={styles.pinTitle}>Address</h2>
             <p className={styles.pinAddress}>
-              The Clinical Atelier, Plot 22, G-11 Markaz, Islamabad, Pakistan.
+             944, Street 96-A, E11/4, Near E11/2 Markaz, islamabad - 44000, Pakistan
             </p>
             <Link href={MAPS_URL} className={styles.pinLink} target="_blank" rel="noopener noreferrer">
               Get directions <span aria-hidden="true">→</span>

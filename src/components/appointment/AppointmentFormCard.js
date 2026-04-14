@@ -10,12 +10,12 @@ const services = [
   'Physiotherapy at home',
   'IV drip & vitals',
   'Elderly care',
-  'Mobile diagnostics',
-  'Emergency coordination',
+  'Psychiatrist sessions',
+  'Nutritionist planning',
   'Medicine delivery',
 ];
 
-const cities = ['Lahore', 'Karachi', 'Islamabad', 'Rawalpindi', 'Faisalabad', 'Multan', 'Other'];
+const cities = ['Islamabad', 'Lahore', 'Rawalpindi', 'Karachi'];
 
 export default function AppointmentFormCard() {
   const ref = useSectionReveal(styles.visible, 0.08);

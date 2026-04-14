@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useSectionReveal } from './useSectionReveal';
-import ImagePlaceholder from './ImagePlaceholder';
+import Image from 'next/image';
 import styles from './ServicesCarePackages.module.css';
 
 const bullets = ['Weekly clinical reviews', 'Dedicated case manager', 'Priority online booking'];
@@ -16,7 +16,13 @@ export default function ServicesCarePackages() {
         <div className={styles.visual}>
           <div className={styles.accent} aria-hidden="true" />
           <div className={styles.imageFrame}>
-            <ImagePlaceholder label="Nebulizer / clinical care" ratio="4 / 5" />
+            <Image
+              src="/images/nebulizer.jpg"
+              alt="CareNest coverage map across Pakistan"
+              width={480}
+              height={520}
+              className={styles.mapImage}
+            />
           </div>
         </div>
         <div className={styles.copy}>

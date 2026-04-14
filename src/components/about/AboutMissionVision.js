@@ -5,7 +5,7 @@ const cards = [
     id: 'mission',
     title: 'Our Mission',
     body:
-      'To deliver hospital-grade home healthcare that is accessible, transparent, and deeply personal—' +
+      'To deliver hospital-grade home healthcare that is accessible, transparent, and deeply personal with high security protocols — ' +
       'empowering families across Pakistan with trusted clinical partners at every step.',
     icon: 'rocket',
     variant: 'light',
@@ -14,7 +14,7 @@ const cards = [
     id: 'vision',
     title: 'Our Vision',
     body:
-      'A future where distance, wait times, and uncertainty no longer define care—where technology and ' +
+      'A future where distance, wait times, and uncertainty no longer define care — where technology and ' +
       'compassion work together so every household can expect the same standard of excellence.',
     icon: 'eye',
     variant: 'dark',

@@ -62,7 +62,7 @@ export default function Sanctuary() {
         <div className={styles.imageCol}>
           <div className={styles.imageWrap}>
             <Image
-              src="/images/sanctuary-interior.png"
+              src="/images/sanctuary-interior1.jpg"
               alt="A serene, premium home healthcare environment"
               width={580}
               height={440}

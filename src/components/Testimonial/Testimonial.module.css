@@ -89,3 +89,30 @@
     font-size: 1rem;
   }
 }
+
+.card {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Dots */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: var(--space-md);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #d1d5db;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.activeDot {
+  width: 20px;
+  background: var(--primary);
+  border-radius: 10px;
+}

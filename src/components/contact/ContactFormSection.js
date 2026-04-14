@@ -96,7 +96,7 @@ export default function ContactFormSection() {
         <div className={styles.visualCol}>
           <div className={styles.visual}>
             <Image
-              src="/images/testimonial-portrait.png"
+              src="/images/leader-sarah.png"
               alt="CareNest clinical team member"
               width={560}
               height={680}

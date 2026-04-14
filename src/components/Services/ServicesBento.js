@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useSectionReveal } from './useSectionReveal';
 import ImagePlaceholder from './ImagePlaceholder';
+import Image from 'next/image';
 import styles from './ServicesBento.module.css';
 
 const quadServices = [
@@ -12,7 +13,6 @@ const quadServices = [
   { title: 'Bedridden care', icon: 'bed' },
 ];
 
-const labIcons = ['Blood panel', 'ECG', 'Ultrasound'];
 
 export default function ServicesBento() {
   const ref = useSectionReveal(styles.visible);
@@ -35,7 +35,13 @@ export default function ServicesBento() {
                 Book consultant <span aria-hidden="true">→</span>
               </Link>
             </div>
-            <ImagePlaceholder label="Doctor portrait" ratio="16 / 11" className={styles.doctorImg} />
+            <Image
+              src="/images/doctor-portrait.png"
+              alt="Doctor providing home visit care"
+              width={480}
+              height={520}
+              className={styles.mapImage}
+            />
           </article>
 
           {/* Nursing — wide blue */}
@@ -115,34 +121,24 @@ export default function ServicesBento() {
             ))}
           </div>
 
-          {/* Mobile diagnostics */}
+          {/* Psychiatrist sessions */}
           <article className={`${styles.card} ${styles.mobile}`} style={{ animationDelay: '0.3s' }}>
             <div className={styles.mobileText}>
-              <h2 className={styles.mobileTitle}>Mobile diagnostics</h2>
+              <h2 className={styles.mobileTitle}>Psychiatrist sessions</h2>
               <p className={styles.mobileDesc}>
-                Sample collection and bedside diagnostics with rapid reporting to your care team.
+                Professional mental health consultations and therapy sessions in the comfort of your home.
               </p>
             </div>
-            <ul className={styles.labRow} aria-label="Sample tests">
-              {labIcons.map((t) => (
-                <li key={t} className={styles.labPill}>
-                  <span className={styles.labDot} aria-hidden="true" />
-                  <span className={styles.labLabel}>{t}</span>
-                </li>
-              ))}
-            </ul>
           </article>
 
-          {/* Emergency */}
-          <article className={`${styles.card} ${styles.emergency}`} style={{ animationDelay: '0.34s' }}>
-            <span className={styles.emergencyIcon} aria-hidden="true">
-              <IconAmbulance />
-            </span>
-            <h2 className={styles.emergencyTitle}>Emergency services</h2>
-            <p className={styles.emergencyDesc}>24/7 ambulance &amp; oxygen therapy coordination.</p>
-            <a href="tel:+92421111111" className={styles.emergencyBtn}>
-              Urgent call
-            </a>
+          {/* Nutritionist planning */}
+          <article className={`${styles.card} ${styles.mobile}`} style={{ animationDelay: '0.34s' }}>
+            <div className={styles.mobileText}>
+              <h2 className={styles.mobileTitle}>Nutritionist planning</h2>
+              <p className={styles.mobileDesc}>
+                Personalized diet plans and nutritional guidance for optimal health and wellness.
+              </p>
+            </div>
           </article>
 
           {/* Bottom pair */}
@@ -220,22 +216,6 @@ function IconPulse() {
   return (
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M4 12h3l2-5 3 10 2-7 2 2h6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function IconAmbulance() {
-  return (
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M6 16h-1a2 2 0 01-2-2V8a2 2 0 012-2h8l4 4v4a2 2 0 01-2 2h-1M6 16v2M18 16v2M8 18h8M4 10h3M16 10h2"
-        stroke="currentColor"
-        strokeWidth="1.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="8" cy="18" r="2" stroke="currentColor" strokeWidth="1.25" />
-      <circle cx="16" cy="18" r="2" stroke="currentColor" strokeWidth="1.25" />
     </svg>
   );
 }

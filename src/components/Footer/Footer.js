@@ -84,11 +84,11 @@ export default function Footer() {
             </li>
             <li className={styles.contactItem}>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 14a7 7 0 01-4-2 7 7 0 01-2-4l2-1.5 1 2-1 1a5 5 0 003 3l1-1 2 1L10 14z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round"/></svg>
-              <span>+92 (42) 111-CARE</span>
+              <span>+92 335-9057555</span>
             </li>
             <li className={styles.contactItem}>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1C5 1 2 3.5 2 7c0 4 6 8 6 8s6-4 6-8c0-3.5-3-6-6-6z" stroke="currentColor" strokeWidth="1.2"/><circle cx="8" cy="7" r="2" stroke="currentColor" strokeWidth="1.2"/></svg>
-              <span>Lahore, Pakistan</span>
+              <span>Islamabad, Pakistan</span>
             </li>
           </ul>
         </div>

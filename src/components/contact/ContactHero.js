@@ -14,8 +14,7 @@ export default function ContactHero() {
           Let&apos;s <span className={styles.titleAccent}>Connect.</span>
         </h1>
         <p className={styles.lead}>
-          Personalized healthcare is just a message away. Reach out to the Clinical Atelier and experience care curated
-          for your specific needs.
+          Personalized healthcare is just a message away. Reach out to the carenest and experience care curated for your specific needs.
         </p>
       </div>
     </section>

@@ -5,7 +5,7 @@ export default function AboutHero() {
   return (
     <section className={styles.section} aria-labelledby="about-hero-heading">
       <div className={`${styles.inner} container-wide`}>
-        <p className={styles.eyebrow}>Since 2018</p>
+        <p className={styles.eyebrow}>Since 2022</p>
         <h1 id="about-hero-heading" className={styles.title}>
           Our <em className={styles.titleEm}>Journey</em>
         </h1>

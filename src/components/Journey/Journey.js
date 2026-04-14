@@ -43,9 +43,9 @@ export default function Journey() {
         <div className={styles.header}>
           <span className="section-label">How It Works</span>
           <h2 className="section-title">Your Journey to Recovery</h2>
-          <p className="section-subtitle">
+          {/* <p className="section-subtitle">
             A structured approach to bringing clinical excellence to your doorstep.
-          </p>
+          </p> */}
         </div>
 
         <div className={styles.timeline}>

@@ -5,9 +5,10 @@ import Image from 'next/image';
 import styles from './Coverage.module.css';
 
 const cities = [
-  { name: 'Lahore', label: 'Main Hub', x: '62%', y: '38%' },
-  { name: 'Karachi', label: 'Southern HQ', x: '38%', y: '78%' },
-  { name: 'Islamabad', label: 'Northern Hub', x: '55%', y: '18%' },
+  { name: 'Islamabad', label: 'Head Office', x: '55%', y: '18%' },
+  { name: 'Lahore', label: 'Office', x: '62%', y: '38%' },
+  { name: 'Karachi', label: 'Office', x: '38%', y: '78%' },
+  
 ];
 
 export default function Coverage() {

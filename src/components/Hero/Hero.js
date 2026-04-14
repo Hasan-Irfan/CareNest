@@ -29,22 +29,21 @@ export default function Hero() {
           <span className={styles.badge}>PMDC Certified Excellence</span>
 
           <h1 className={styles.title}>
-            Private Medical
+            Quality Healthcare,
             <br />
-            <span className={styles.titleAccent}>Excellence</span> at Home
+            <span className={styles.titleAccent}>Care</span> at Your Doorstep
           </h1>
 
           <p className={styles.subtitle}>
-            Experience private medical excellence without leaving your residence.
-            Our PMDC certified elite staff provides hospital-grade treatment
-            within the sanctuary of your own home.
+            Carenest pakistan provides professional home health care services including nursing care, physiotherapy, psychiatrist sessions,
+            patient attendants, and medical support at your home
           </p>
 
           <div className={styles.ctas}>
             <Link href="/book" className="btn-primary">
               <span>Schedule Consultation</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ position: 'relative', zIndex: 1 }}>
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
             <Link href="/services" className="btn-secondary">
@@ -60,12 +59,12 @@ export default function Hero() {
             </div>
             <div className={styles.statDivider} />
             <div className={styles.stat}>
-              <span className={styles.statValue}>500+</span>
+              <span className={styles.statValue}>100+</span>
               <span className={styles.statLabel}>Medical Staff</span>
             </div>
             <div className={styles.statDivider} />
             <div className={styles.stat}>
-              <span className={styles.statValue}>15K+</span>
+              <span className={styles.statValue}>230+</span>
               <span className={styles.statLabel}>Home Visits</span>
             </div>
           </div>
@@ -86,8 +85,8 @@ export default function Hero() {
           {/* Floating badge */}
           <div className={styles.floatingBadge}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <circle cx="10" cy="10" r="10" fill="#046e01" fillOpacity="0.12"/>
-              <path d="M6 10.5l2.5 2.5L14 8" stroke="#046e01" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="10" cy="10" r="10" fill="#046e01" fillOpacity="0.12" />
+              <path d="M6 10.5l2.5 2.5L14 8" stroke="#046e01" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             <span>Patient satisfaction rating across Pakistan</span>
           </div>
