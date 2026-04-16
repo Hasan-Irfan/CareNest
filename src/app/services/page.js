@@ -1,6 +1,6 @@
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
-import ServicesPage from '@/components/services/ServicesPage';
+import ServicesPage from '@/components/Services/ServicesPage';
 
 export const metadata = {
   title: 'Medical Services | CareNest Pakistan',

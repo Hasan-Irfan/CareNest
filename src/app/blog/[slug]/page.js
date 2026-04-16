@@ -3,8 +3,12 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
-import { getPostBySlug } from '@/data/blogPosts';
+import { BLOG_POSTS, getPostBySlug } from '@/data/blogPosts';
 import styles from './post.module.css';
+
+export function generateStaticParams() {
+  return BLOG_POSTS.map((post) => ({ slug: post.slug }));
+}
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
