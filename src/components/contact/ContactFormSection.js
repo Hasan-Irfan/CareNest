@@ -19,13 +19,21 @@ const services = [
 
 export default function ContactFormSection() {
   const ref = useSectionReveal(styles.visible);
-  const [sent, setSent] = useState(false);
   const [status, setStatus] = useState(null); // null | sending | sent | error
 
   function handleSubmit(e) {
     e.preventDefault();
-
     const form = e.currentTarget;
+
+    // --- BOT DETECTION (HONEYPOT) ---
+    // If 'company' has a value, it's likely a bot. 
+    // We return silently so the bot thinks it succeeded.
+    if (form.company.value) {
+      console.warn("Bot detected.");
+      setStatus("sent"); 
+      form.reset();
+      return;
+    }
 
     setStatus("sending");
 
@@ -40,8 +48,7 @@ export default function ContactFormSection() {
         () => {
           setStatus("sent");
           form.reset();
-
-          setTimeout(() => setStatus(null), 5000); // reset UI
+          setTimeout(() => setStatus(null), 5000);
         },
         (error) => {
           console.error('FAILED...', error);
@@ -58,6 +65,16 @@ export default function ContactFormSection() {
             <h2 id="contact-form-title" className={styles.formTitle}>
               Send us a message
             </h2>
+
+            {/* --- HONEYPOT FIELD --- */}
+            <div style={{ display: 'none' }} aria-hidden="true">
+              <input 
+                type="text" 
+                name="company" 
+                tabIndex="-1" 
+                autoComplete="off" 
+              />
+            </div>
 
             <label className={styles.field}>
               <span className={styles.label}>Full name</span>
@@ -105,20 +122,12 @@ export default function ContactFormSection() {
               />
             </label>
 
-            {status === "sending" && (
-              <p className={styles.feedback}>Sending...</p>
-            )}
-
+            {status === "sending" && <p className={styles.feedback}>Sending...</p>}
             {status === "sent" && (
-              <p className={styles.feedback}>
-                Thank you—our team will reply shortly.
-              </p>
+              <p className={styles.feedback}>Thank you—our team will reply shortly.</p>
             )}
-
             {status === "error" && (
-              <p className={styles.feedback}>
-                Something went wrong. Please try again.
-              </p>
+              <p className={styles.feedback}>Something went wrong. Please try again.</p>
             )}
 
             <button
@@ -141,6 +150,7 @@ export default function ContactFormSection() {
               className={styles.portrait}
               sizes="(max-width: 960px) 100vw, 45vw"
             />
+            {/* ... aside and svg code ... */}
             <aside className={styles.callout} aria-label="Mission note">
               <span className={styles.calloutIcon} aria-hidden="true">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

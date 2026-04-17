@@ -23,8 +23,16 @@ export default function AppointmentFormCard() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
     const form = e.currentTarget;
+
+    // --- HONEYPOT LOGIC ---
+    // If the hidden field 'company' has any value, it's a bot.
+    if (form.company.value) {
+      console.warn("Honeypot filled - Bot detected.");
+      setStatus("received"); // Fake success to fool the bot
+      form.reset();
+      return;
+    }
 
     setStatus("sending");
 
@@ -39,8 +47,7 @@ export default function AppointmentFormCard() {
         () => {
           setStatus("received");
           form.reset();
-
-          setTimeout(() => setStatus(null), 5000); // reset UI after 5s
+          setTimeout(() => setStatus(null), 5000);
         },
         (error) => {
           console.error("FAILED...", error);
@@ -55,6 +62,16 @@ export default function AppointmentFormCard() {
         <h2 className={styles.cardTitle}>
           Appointment Details
         </h2>
+
+        {/* --- HONEYPOT FIELD --- */}
+        <div style={{ display: 'none' }} aria-hidden="true">
+          <input 
+            type="text" 
+            name="company" 
+            tabIndex="-1" 
+            autoComplete="off" 
+          />
+        </div>
 
         {/* Row 1 */}
         <div className={styles.row}>
@@ -156,7 +173,6 @@ export default function AppointmentFormCard() {
           </p>
         )}
 
-        {/* Button */}
         <button
           type="submit"
           className={styles.submit}
