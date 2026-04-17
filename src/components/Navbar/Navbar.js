@@ -95,8 +95,8 @@ export default function Navbar() {
             <Image
               src="/images/logo.png"
               alt="CareNest"
-              width={65}
-              height={65}
+              width={55}
+              height={55}
               aria-hidden="true"
             />
             <span className={styles.logoText}>CareNest</span>

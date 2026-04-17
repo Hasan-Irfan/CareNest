@@ -5,6 +5,7 @@ import AboutAdvantage from './AboutAdvantage';
 import AboutLeadership from './AboutLeadership';
 import AboutPartners from './AboutPartners';
 import styles from './AboutShell.module.css';
+import Testimonial from '../Testimonial/Testimonial';
 
 export default function AboutPage() {
   return (
@@ -13,7 +14,8 @@ export default function AboutPage() {
       <AboutTrust />
       <AboutMissionVision />
       <AboutAdvantage />
-      <AboutLeadership />
+      <Testimonial />
+      {/* <AboutLeadership /> */}
       {/* <AboutPartners /> */}
     </div>
   );

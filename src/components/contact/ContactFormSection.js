@@ -4,10 +4,12 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useSectionReveal } from '@/components/services/useSectionReveal';
 import styles from './ContactFormSection.module.css';
+import emailjs from "@emailjs/browser";
 
 const services = [
   'In-Home Nursing Care',
-  'Doctor home visits',
+  'Psychiatrist sessions',
+  'Nutritionist planning',
   'Physiotherapy at home',
   'Mobile diagnostics',
   'Elderly care',
@@ -18,12 +20,34 @@ const services = [
 export default function ContactFormSection() {
   const ref = useSectionReveal(styles.visible);
   const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState(null); // null | sending | sent | error
 
   function handleSubmit(e) {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    setSent(true);
-    console.info('Contact message', Object.fromEntries(fd.entries()));
+
+    const form = e.currentTarget;
+
+    setStatus("sending");
+
+    emailjs
+      .sendForm(
+        'service_i2sxfg3',
+        'template_7ret10m',
+        form,
+        'QhE1CU0j3FzCMzl7C'
+      )
+      .then(
+        () => {
+          setStatus("sent");
+          form.reset();
+
+          setTimeout(() => setStatus(null), 5000); // reset UI
+        },
+        (error) => {
+          console.error('FAILED...', error);
+          setStatus("error");
+        }
+      );
   }
 
   return (
@@ -38,7 +62,7 @@ export default function ContactFormSection() {
             <label className={styles.field}>
               <span className={styles.label}>Full name</span>
               <input
-                name="fullName"
+                name="name"
                 type="text"
                 className={styles.input}
                 placeholder="Dr. Sarah Ahmed"
@@ -81,14 +105,28 @@ export default function ContactFormSection() {
               />
             </label>
 
-            {sent && (
-              <p className={styles.feedback} role="status">
+            {status === "sending" && (
+              <p className={styles.feedback}>Sending...</p>
+            )}
+
+            {status === "sent" && (
+              <p className={styles.feedback}>
                 Thank you—our team will reply shortly.
               </p>
             )}
 
-            <button type="submit" className={styles.submit}>
-              Send message
+            {status === "error" && (
+              <p className={styles.feedback}>
+                Something went wrong. Please try again.
+              </p>
+            )}
+
+            <button
+              type="submit"
+              className={styles.submit}
+              disabled={status === "sending"}
+            >
+              {status === "sending" ? "Sending..." : "Send message"}
             </button>
           </form>
         </div>

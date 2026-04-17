@@ -7,6 +7,7 @@ import Testimonial from '@/components/Testimonial/Testimonial';
 import Coverage from '@/components/Coverage/Coverage';
 import CTA from '@/components/CTA/CTA';
 import Footer from '@/components/Footer/Footer';
+import AboutLeadership from '@/components/about/AboutLeadership';
 
 export default function Home() {
   return (
@@ -17,7 +18,8 @@ export default function Home() {
         <Services />
         <Sanctuary />
         <Journey />
-        <Testimonial />
+        <AboutLeadership />
+        {/* <Testimonial /> */}
         <Coverage />
         <CTA />
       </main>

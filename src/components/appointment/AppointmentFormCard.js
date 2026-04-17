@@ -1,12 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import emailjs from "@emailjs/browser";
 import { useSectionReveal } from '@/components/services/useSectionReveal';
 import styles from './AppointmentFormCard.module.css';
 
 const services = [
-  'Doctor home visits',
-  '24/7 Nursing care',
+  'Nursing care',
   'Physiotherapy at home',
   'IV drip & vitals',
   'Elderly care',
@@ -23,32 +23,67 @@ export default function AppointmentFormCard() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const payload = Object.fromEntries(data.entries());
-    setStatus('received');
-    console.info('Appointment request', payload);
+
+    const form = e.currentTarget;
+
+    setStatus("sending");
+
+    emailjs
+      .sendForm(
+        "service_i2sxfg3",
+        "template_4o53eu8",
+        form,
+        "QhE1CU0j3FzCMzl7C"
+      )
+      .then(
+        () => {
+          setStatus("received");
+          form.reset();
+
+          setTimeout(() => setStatus(null), 5000); // reset UI after 5s
+        },
+        (error) => {
+          console.error("FAILED...", error);
+          setStatus("error");
+        }
+      );
   }
 
   return (
     <div className={styles.root} ref={ref}>
-      <form className={styles.card} onSubmit={handleSubmit} aria-labelledby="appointment-form-title">
-        <h2 id="appointment-form-title" className={styles.cardTitle}>
+      <form className={styles.card} onSubmit={handleSubmit}>
+        <h2 className={styles.cardTitle}>
           Appointment Details
         </h2>
 
+        {/* Row 1 */}
         <div className={styles.row}>
-          <label className={styles.field} style={{ animationDelay: '0.1s' }}>
+          <label className={styles.field}>
             <span className={styles.label}>Full name</span>
             <input
               className={styles.input}
-              name="fullName"
+              name="name"
               type="text"
               placeholder="e.g. Ahmed Ali"
               required
-              autoComplete="name"
             />
           </label>
-          <label className={styles.field} style={{ animationDelay: '0.16s' }}>
+
+          <label className={styles.field}>
+            <span className={styles.label}>Email</span>
+            <input
+              className={styles.input}
+              name="email"
+              type="email"
+              placeholder="ahmed@email.com"
+              required
+            />
+          </label>
+        </div>
+
+        {/* Row 2 */}
+        <div className={styles.row}>
+          <label className={styles.field}>
             <span className={styles.label}>Phone number</span>
             <input
               className={styles.input}
@@ -56,54 +91,45 @@ export default function AppointmentFormCard() {
               type="tel"
               placeholder="+92 3XX XXXXXXX"
               required
-              autoComplete="tel"
+            />
+          </label>
+
+          <label className={styles.field}>
+            <span className={styles.label}>Service</span>
+            <select className={styles.select} name="service" required>
+              <option value="">Choose a service</option>
+              {services.map((s) => (
+                <option key={s} value={s}>{s}</option>
+              ))}
+            </select>
+          </label>
+        </div>
+
+        {/* Row 3 */}
+        <div className={styles.row}>
+          <label className={styles.field}>
+            <span className={styles.label}>City</span>
+            <select className={styles.select} name="city" required>
+              <option value="">Select city</option>
+              {cities.map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+          </label>
+
+          <label className={styles.field}>
+            <span className={styles.label}>Preferred date</span>
+            <input
+              className={styles.input}
+              name="preferredDate"
+              type="date"
+              required
             />
           </label>
         </div>
 
-        <div className={styles.row}>
-          <label className={styles.field} style={{ animationDelay: '0.22s' }}>
-            <span className={styles.label}>Select service</span>
-            <select className={styles.select} name="service" required defaultValue="">
-              <option value="" disabled>
-                Choose a service
-              </option>
-              {services.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className={styles.field} style={{ animationDelay: '0.28s' }}>
-            <span className={styles.label}>City</span>
-            <select className={styles.select} name="city" required defaultValue="">
-              <option value="" disabled>
-                Select city
-              </option>
-              {cities.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-
-        <label className={styles.field} style={{ animationDelay: '0.34s' }}>
-          <span className={styles.label}>Preferred date</span>
-          <span className={styles.dateWrap}>
-            <input className={styles.input} name="preferredDate" type="date" required />
-            <span className={styles.dateIcon} aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.4" />
-                <path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-              </svg>
-            </span>
-          </span>
-        </label>
-
-        <label className={styles.field} style={{ animationDelay: '0.4s' }}>
+        {/* Notes */}
+        <label className={styles.field}>
           <span className={styles.label}>Additional notes</span>
           <textarea
             className={styles.textarea}
@@ -113,15 +139,30 @@ export default function AppointmentFormCard() {
           />
         </label>
 
-        {status === 'received' && (
-          <p className={styles.feedback} role="status">
-            Thank you—we&apos;ll contact you shortly to confirm your visit.
+        {/* Status Messages */}
+        {status === "sending" && (
+          <p className={styles.feedback}>Sending...</p>
+        )}
+
+        {status === "received" && (
+          <p className={styles.feedback}>
+            Thank you—we’ll contact you shortly.
           </p>
         )}
 
-        <button type="submit" className={styles.submit}>
-          <span>Confirm booking</span>
-          <span aria-hidden="true">→</span>
+        {status === "error" && (
+          <p className={styles.feedback}>
+            Something went wrong. Try again.
+          </p>
+        )}
+
+        {/* Button */}
+        <button
+          type="submit"
+          className={styles.submit}
+          disabled={status === "sending"}
+        >
+          {status === "sending" ? "Sending..." : "Confirm booking"}
         </button>
       </form>
     </div>

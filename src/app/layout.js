@@ -26,7 +26,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: 'CareNest Pakistan | Premium Home Healthcare',
+  title: 'CareNest Pakistan',
   description:
     'Experience private medical excellence without leaving your residence. PMDC certified elite staff provides hospital-grade treatment within the sanctuary of your own home. Serving Lahore, Karachi & Islamabad.',
   keywords: [
