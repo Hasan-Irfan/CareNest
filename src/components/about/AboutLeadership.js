@@ -5,7 +5,7 @@ const founder = {
   name: 'Dr. Hafeez Malik',
   role: 'Founder and CEO of CareNest Pakistan',
   image: '/images/founder.png',
-  bio: 'Dr. Hafeez Malik is a visionary healthcare leader with over 20 years of experience in medical practice and healthcare management. His passion for accessible healthcare has driven him to establish CareNest as Pakistan\'s premier home healthcare provider, ensuring quality medical care reaches every doorstep across the nation.',
+  bio: 'Dr. Hafeez Malik is a visionary healthcare leader with over 10 years of experience in medical practice and healthcare management. His passion for accessible healthcare has driven him to establish CareNest as Pakistan\'s premier home healthcare provider, ensuring quality medical care reaches every doorstep across the nation.',
 };
 
 export default function AboutLeadership() {

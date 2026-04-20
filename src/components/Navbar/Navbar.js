@@ -99,7 +99,9 @@ export default function Navbar() {
               height={55}
               aria-hidden="true"
             />
-            <span className={styles.logoText}>CareNest</span>
+            <span className={styles.logoText}>
+              CareNest <span className="text-green-500">Pakistan</span>
+            </span>
           </Link>
 
           {/* Desktop Links */}
