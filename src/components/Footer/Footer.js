@@ -43,7 +43,7 @@ export default function Footer() {
           <div className={styles.socials}>
             {[
               { name: 'facebook', url: 'https://www.facebook.com/share/15hGHBpmArE/' },
-              { name: 'instagram', url: 'https://www.facebook.com/share/15hGHBpmArE/' }
+              { name: 'instagram', url: 'https://www.instagram.com/dr.hafeez.malik?igsh=MTN0dG8xemRrOHhjYg==' }
             ].map((platform) => (
               <a
                 key={platform.name}
